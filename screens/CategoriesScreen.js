@@ -1,13 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
-import { CATEGORIES } from "../data/mock-data";
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {CATEGORIES} from "../data/mock-data";
 
 const renderGridItem = (itemData) => {
-    return <View style={styles.gridItem}><Text>{itemData.item.title}</Text></View>
+    return <TouchableOpacity>
+        <View style={styles.gridItem}>
+            <Text>{itemData.item.title}</Text>
+        </View>
+    </TouchableOpacity>
 }
 
 const ScreenCategories = props => {
-    return <FlatList keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
+    return <FlatList keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem}
+                     numColumns={2}/>
 };
 
 const styles = StyleSheet.create({
