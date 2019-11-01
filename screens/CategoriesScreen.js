@@ -2,18 +2,29 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {CATEGORIES} from "../data/mock-data";
 
-const renderGridItem = (itemData) => {
-    return <TouchableOpacity>
-        <View style={styles.gridItem}>
-            <Text>{itemData.item.title}</Text>
-        </View>
-    </TouchableOpacity>
-}
+const CategoriesScreen = props => {
 
-const ScreenCategories = props => {
+    const renderGridItem = (itemData) => {
+        return <TouchableOpacity
+            style={styles.gridItem}
+            onPress={() => {
+            props.navigation.navigate({routeName: 'CategoryMeals', params: {
+                categoryId: itemData.item.id
+                }});
+        }}>
+            <View>
+                <Text>{itemData.item.title}</Text>
+            </View>
+        </TouchableOpacity>
+    }
+
     return <FlatList keyExtractor={(item, index) => item.id} data={CATEGORIES} renderItem={renderGridItem}
                      numColumns={2}/>
 };
+
+CategoriesScreen.navigationOptions =  {
+    headerTitle: 'Meal Categories'
+}
 
 const styles = StyleSheet.create({
     screen: {
@@ -28,5 +39,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ScreenCategories;
+export default CategoriesScreen;
 
