@@ -5,10 +5,10 @@ import {AppLoading} from 'expo';
 import MealsNavigator from "./navigation/MealsNavigator";
 import useScreens from 'react-native-screens';
 
-useScreens();
+//useScreens();
 
 const fetchFonts = () => {
-  Font.loadAsync({
+  return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
   })
